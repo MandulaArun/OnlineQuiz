@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>QuizVerse · Smart Online Quiz</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="app-container">
+      <header class="app-header">
+        <div class="brand">
+          <div class="logo-circle">Q</div>
+          <div class="brand-text">
+            <h1>QuizVerse</h1>
+            <p>Tech quiz playground for learners & interview prep</p>
+          </div>
+        </div>
+        <nav class="top-nav">
+          <a class="nav-link nav-link-active">Practice</a>
+          <a class="nav-link">Sessions</a>
+          <a class="nav-link">About</a>
+        </nav>
+        <div class="user-panel">
+          <label for="username" class="username-label">Player</label>
+          <input
+            type="text"
+            id="username"
+            class="username-input"
+            placeholder="Pick a fun nickname"
+          />
+          <button id="save-username" class="btn btn-secondary">Save</button>
+        </div>
+      </header>
+
+      <main class="content">
+        <section class="quiz-card">
+          <div class="quiz-header">
+            <div>
+              <h2>Start a session</h2>
+              <p class="quiz-subtitle">
+                Choose what you want to practice, then fly through the questions.
+              </p>
+            </div>
+            <div class="quiz-meta">
+              <span id="question-counter">0 / 0</span>
+              <span id="question-topic" class="pill pill-topic">Topic</span>
+              <span id="question-difficulty" class="pill pill-difficulty"
+                >Difficulty</span
+              >
+            </div>
+          </div>
+
+          <div class="quiz-setup">
+            <div class="field">
+              <label for="topic-select">Topic</label>
+              <select id="topic-select" class="field-control">
+                <option value="">All topics</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="difficulty-select">Difficulty</label>
+              <select id="difficulty-select" class="field-control">
+                <option value="">All levels</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="question-count">Questions</label>
+              <select id="question-count" class="field-control">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="0">All</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="progress-row">
+            <div class="progress-track">
+              <div id="progress-fill" class="progress-fill"></div>
+            </div>
+            <span id="progress-label" class="progress-label">0% complete</span>
+          </div>
+
+          <div id="quiz-body" class="quiz-body">
+            <div id="question-text" class="question-text">
+              Loading questions...
+            </div>
+            <div id="options-container" class="options-container"></div>
+          </div>
+
+          <div class="quiz-footer">
+            <div class="quiz-controls">
+              <button id="prev-question" class="btn btn-ghost" disabled>
+                Previous
+              </button>
+              <button id="next-question" class="btn btn-ghost" disabled>
+                Next
+              </button>
+              <div class="spacer"></div>
+              <button id="start-quiz" class="btn btn-primary">Start Quiz</button>
+              <button
+                id="submit-quiz"
+                class="btn btn-primary btn-strong"
+                disabled
+              >
+                Submit Quiz
+              </button>
+            </div>
+            <small class="hint-text"
+              >Tip: Save your username first so your performance is tracked
+              over time.</small
+            >
+          </div>
+        </section>
+
+        <aside class="sidebar">
+          <section class="panel">
+            <h3>Score</h3>
+            <div id="score-summary" class="score-summary">
+              <p>No quiz submitted yet.</p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>Performance Overview</h3>
+            <div id="performance-summary">
+              <p>Finish at least one quiz to see your performance.</p>
+            </div>
+          </section>
+
+          <section class="panel">
+            <h3>Smart Suggestions (ML)</h3>
+            <ul id="suggestions-list" class="suggestions-list">
+              <li>
+                Machine learning will analyze your answers and highlight topics
+                to focus on.
+              </li>
+            </ul>
+          </section>
+        </aside>
+      </main>
+
+      <footer class="app-footer">
+        <span>Built with FastAPI, vanilla JS, and a splash of ML magic.</span>
+      </footer>
+    </div>
+
+    <div id="toast" class="toast" aria-live="polite"></div>
+
+    <script src="/static/app.js"></script>
+  </body>
+  </html>
+

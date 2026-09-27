@@ -1,0 +1,11 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+quiz.db
+.DS_Store
+.env
+.pytest_cache/
+.vscode/
